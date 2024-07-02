@@ -1,0 +1,140 @@
+* {
+    font-family: "Space Grotesk", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+input {
+    background: #dfa57c;
+}
+
+.all-results {
+    border-radius: 5%;
+    background: #dfa57c;
+    text-align: center;
+    color: #000000;
+}
+
+.result-list {
+    margin-left: 30px;
+    text-align: left;
+    padding: 20px;
+}
+
+.steps {
+    text-align: center;
+    font-weight: 900;
+    font-size: 31px;
+    color: #724e35;
+}
+
+button.col.result-button {
+    cursor: pointer;
+    margin-top: 80px;
+    margin-right: 50px;
+    background: #724e35;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+button.col {
+    cursor: pointer;
+    background: #e1d0bc;
+    color: #000000;
+    font-size: 1em;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    width: 150px;
+    height: 45px;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 800px;
+}
+
+.main-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.title {
+    font-size: 1.5em;
+    margin: 20px;
+    text-align: center;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.code {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1em;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.container-result {
+    width: 600px;
+
+    background: #c08861;
+    color: #000000;
+    min-height: 40px;
+    font-size: 1em;
+    padding: 20px;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-left: 0px;
+}
+
+span {
+    font-weight: 700;
+}
+
+.time {
+    color: #fff;
+    font-size: 25px;
+}
+
+.footer {
+    margin-top: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.9em;
+}

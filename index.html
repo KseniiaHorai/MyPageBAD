@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BAD Application</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="bootstrap-grid.min.css" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <h1>BAD Application</h1>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="container">
+                <iframe
+                    src="Resume_Horai.pdf"
+                    width="800"
+                    height="1130"
+                ></iframe>
+            </div>
+        </div>
+        <section class="buttons">
+            <div class="container">
+                <h2>Choose a txt file</h2>
+                <input type="file" id="file" accept=".txt" />
+
+                <div class="container all-results">
+                    <h2>Run the program and get all the results</h2>
+                    <div class="row">
+                        <div class="col-8">
+                            <ul class="result-list result">
+                                <li><span class="time">Time:</span></li>
+                                <li><span>Min:</span></li>
+                                <li><span>Max:</span></li>
+                                <li><span>Median:</span></li>
+                                <li><span>Average:</span></li>
+                                <li><span>IncreasingSequence:</span></li>
+                                <li><span>DecreasingSequence:</span></li>
+                            </ul>
+                        </div>
+                        <button class="col result-button">Calculate</button>
+                    </div>
+                </div>
+                <h2 class="steps">
+                    These are the steps that I took to find the solution
+                </h2>
+                <h2>Find min and max with reduce</h2>
+                <div class="code">
+                    <pre>
+    <span>//1. Max і Min за допомогою reduce. 
+    //Можна було б так само пройтися циклом, 
+    //проте цей метод ніколи не використовувала, 
+    //хотілось спробувати</span>
+
+    array.reduce((p, c) => Math.min(p, c), Infinity)
+    array.reduce((p, c) => Math.max(p, c), -Infinity)</pre>
+                </div>
+
+                <div class="result-section">
+                    <div class="container container-result">
+                        <div class="row">
+                            <div class="col-8 result">
+                                <span class="time">Time: </span><br />
+                                <span>Min: </span><br /><span>Max: </span>
+                            </div>
+                            <button class="col">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Sort using quickSort and find median</h2>
+                <div class="code">
+                    <pre>
+        <span>//Медіана - тут доведеться сортувати</span>
+        <span>//2.1 Спробувала сортування QuickSort прописати вручну і знайшла медіану.
+        //Однак цей спосіб виявився занадто повільним. Тому далі застосувала інший.
+        </span>
+
+        if (arr.length <= 1) {
+            return arr;
+        }
+
+        const pivot = arr[0];
+        const less = [];
+        const greater = [];
+
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > pivot) {
+                greater.push(arr[i]);
+            } else {
+                less.push(arr[i]);
+            }
+        }
+
+        return [...quickSort(less), pivot, ...quickSort(greater)];
+    }</pre>
+                </div>
+                <div class="result-section">
+                    <div class="container container-result">
+                        <div class="row">
+                            <div class="col-8 result">
+                                <span class="time">Time: </span><br />
+                                <span>Min: </span><br /><span>Max: </span
+                                ><br /><span>Median: </span>
+                            </div>
+                            <button class="col">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Sort using built-in sort and find median average</h2>
+                <div class="code">
+                    <pre>
+    <span>//2.2 Сортування з вбудованим методом sort 
+    //виявилося швидшим, тому застосуємо його,
+    //знайдемо медіану і середнє значення</span>
+
+    const sortedArray = array.sort((a, b) => a - b);
+    findMedian(sortedArray);
+    findAverage(sortedArray);</pre>
+                </div>
+
+                <div class="result-section">
+                    <div class="container container-result">
+                        <div class="row">
+                            <div class="col-8 result">
+                                <span class="time">Time: </span><br />
+                                <span>Min: </span><br /><span>Max: </span
+                                ><br /><span>Median: </span><br /><span
+                                    >Average:
+                                </span>
+                            </div>
+                            <button class="col">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Find the longest increasing and decreasing sequences</h2>
+                <div class="code">
+                    <pre>
+    <span>//3. Знайдемо найбільшу послідовність чисел, 
+    //яка збільшується і яка зменшується</span>
+
+    function findLongestIncreasingSequence(arr) {
+        let maxSeq = [];
+        let currentSeq = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            if (i === 0 || arr[i] > arr[i - 1]) {
+                currentSeq.push(arr[i]);
+            } else {
+                if (currentSeq.length > maxSeq.length) {
+                    maxSeq = currentSeq;
+                }
+                currentSeq = [arr[i]];
+            }
+        }
+
+        if (currentSeq.length > maxSeq.length) {
+            maxSeq = currentSeq;
+        }
+
+        return maxSeq;
+    }
+
+
+
+    function findLongestDecreasingSequence(arr) {
+        let maxSeq = [];
+        let currentSeq = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            if (i === 0 || arr[i] < arr[i - 1]) {
+                currentSeq.push(arr[i]);
+            } else {
+                if (currentSeq.length > maxSeq.length) {
+                    maxSeq = currentSeq;
+                }
+                currentSeq = [arr[i]];
+            }
+        }
+
+        if (currentSeq.length > maxSeq.length) {
+            maxSeq = currentSeq;
+        }
+
+        return maxSeq;
+    }
+</pre>
+                </div>
+
+                <div class="result-section">
+                    <div class="container container-result">
+                        <div class="row">
+                            <div class="col-8 result">
+                                <span class="time">Time: </span><br />
+                                <span>IncreasingSequence: </span><br /><span
+                                    >DecreasingSequence:
+                                </span>
+                            </div>
+                            <button class="col">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 BAD Application</p>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
